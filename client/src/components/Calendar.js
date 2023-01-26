@@ -17,8 +17,9 @@ import { Box, Button, Slider } from "@material-ui/core";
 import Dialog from "@mui/material/Dialog";
 import CircularProgress from "@mui/material/CircularProgress";
 import SettingsSuggestIcon from "@mui/icons-material/SettingsSuggest";
+// import Jitsi from 'react-jitsi'
 
-const contractAddress = "0x4Ff37AD3Ef45A76f843dfBfDe7B213B34F7dDe60";
+const contractAddress = "0x25C0a2F0A077F537Bd11897F04946794c2f6f1Ef";
 const contractABI = abi.abi;
 const provider = new ethers.providers.Web3Provider(window.ethereum);
 const contract = new ethers.Contract(
@@ -40,8 +41,13 @@ const Calendar = ({ account }) => {
   const [transactionHash, setTransactionHash] = useState("");
 
   const getData = async () => {
+    const network = await provider.getNetwork()
+    console.log('network',network)
     // get contract owner and set admin if connected account is owner
+    // console.log('contract rate',contract.address)
     const owner = await contract.owner();
+    console.log('contract owner',owner)
+    // console.log('account addr',account)
     setIsAdmin(owner.toUpperCase() === account.toUpperCase());
 
     const rate = await contract.getRate();
@@ -234,6 +240,7 @@ const Calendar = ({ account }) => {
         </Scheduler>
       </div>
       {showDialog && <ConfirmDialog />}
+
     </div>
   );
 };

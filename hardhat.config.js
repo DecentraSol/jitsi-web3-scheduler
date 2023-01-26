@@ -20,9 +20,19 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 module.exports = {
   solidity: "0.8.9",
   networks: {
-    ropsten: {
-      url: process.env.ALCHEMY_URL,
-      accounts: [process.env.SECRET_KEY],
+    hardhat: { 
+      //url: "http://127.0.0.1:8545/",
+      chainId: 1337,
+      initialBaseFeePerGas: 0,
+      forking: {
+        url: `https://eth-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
+//        blockNumber: 12158458 
+      },
+      timeout: 100000
     },
-  },
+    mumbai: {
+      url: process.env.HTTP_URL,
+      accounts: [process.env.PRIVATE_KEY],
+    },
+  }
 };

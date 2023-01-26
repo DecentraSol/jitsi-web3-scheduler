@@ -1,14 +1,13 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
-describe("Calend3", function () {
+describe("JitsiWeb3Scheduler", function () {
   let Contract, contract;
   let owner, addr1, addr2;
 
   // `beforeEach` will run before each test
   beforeEach(async function () {
     [owner, addr1, addr2] = await ethers.getSigners();
-
     Contract = await ethers.getContractFactory("Calend3");
     contract = await Contract.deploy();
     await contract.deployed();
