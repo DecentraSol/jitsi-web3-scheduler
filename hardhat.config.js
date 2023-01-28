@@ -20,14 +20,13 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 module.exports = {
   solidity: "0.8.9",
   networks: {
-    hardhat: { 
-      //url: "http://127.0.0.1:8545/",
-      chainId: 1337,
-      initialBaseFeePerGas: 0,
-      forking: {
-        url: `https://eth-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
-//        blockNumber: 12158458 
-      },
+    local: { 
+      url: "http://127.0.0.1:8545/",
+      chainId: 31337,
+//       forking: {
+//         url: process.env.HTTP_URL //`https://eth-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
+// //        blockNumber: 12158458 
+//       },
       timeout: 100000
     },
     mumbai: {

@@ -19,7 +19,8 @@ async function main() {
   await contract.deployed();
 
   console.log("Calend3 contract deployed to:", contract.address);
-
+  const balance02 = await ethers.provider.getBalance(account0)
+  console.log(`balance of address ${account0} is now`,ethers.utils.formatEther(balance02))
   saveFrontendFiles();
 }
 

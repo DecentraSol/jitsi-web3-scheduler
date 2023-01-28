@@ -8,13 +8,13 @@ Users interact with the Frontend React Calend3 Web3app, viewing the available sc
 # Usage
 1. clone this repo and run ```npm i```
 2. run ```npx run build``` in order to compile the smart contracts with waffle
-3. run ```npx hardhat node --fork https://eth-mainnet.g.alchemy.com/v2/${API_KEY}``` in a separate console
-4. run ```npx hardhat test scripts/test.js``` to run basic tests
+3. run ```npx hardhat node ``` in a separate console
+4. run ```npx hardhat test tests/test.js``` to run basic tests
 5. run ```npx hardhat run --network local scripts/deploy.js``` 
 6. copy deployed contract address into:
     - client/src/components/Calendar.js and
     - test/test2.js 
-7. run ```npx hardhat test --network local  scripts/test2.js``` to check if contract is deployed
+7. run ```npx hardhat test --network local  test/test2.js``` to check if contract is deployed
 8. run ```npm start``` and open http://localhost:3000 
     - make an appointment 
     - if you are connecting with admin it should be possible to set minutely reate in ETH or other currency
@@ -32,3 +32,6 @@ Users interact with the Frontend React Calend3 Web3app, viewing the available sc
 - it should be possible to pay in different currencies - they should be converted to a default currency at the moment of payment.
 - the minutely should be visible in EUR/USD/BTC and current price should be converted from chainlink
 - invite other participants
+
+# Done 
+- 2023-01-28 CurrentTimeIndicator added - https://devexpress.github.io/devextreme-reactive/react/scheduler/docs/guides/current-time-indication/

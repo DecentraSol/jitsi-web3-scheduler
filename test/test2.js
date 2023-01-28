@@ -1,4 +1,6 @@
 const { ethers, upgrades } = require("hardhat");
+const { expect } = require("chai");
+
 const abi = require("../build/Calend3.json")
 /**
  *  npx hardhat run --network local scripts/deploy.js
@@ -7,7 +9,7 @@ const abi = require("../build/Calend3.json")
  */
 describe("JitsiWeb3Scheduler", function () {
 
-  const contractAddress = "0x25C0a2F0A077F537Bd11897F04946794c2f6f1Ef"
+  const contractAddress = "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512"
   const contractABI = abi.abi;
   let contract 
 
@@ -22,7 +24,7 @@ describe("JitsiWeb3Scheduler", function () {
   })  
 
   it("Should print owner of contract", async function () {
-    const owner = await contract.owner()
-    console.log("owner",owner)
+    [owner, addr1, addr2] = await ethers.getSigners();
+    expect(await contract.owner()).to.equal(owner.address);
 })
 })
